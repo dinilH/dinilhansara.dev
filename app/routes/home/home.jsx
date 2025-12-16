@@ -142,6 +142,7 @@ export const Home = () => {
         title="wibhage.lk"
         description="PHP-based examination management system"
         buttonText="View project"
+        buttonDisabled
         buttonLink="/projects/wibhage"
         model={{
           type: 'laptop',
@@ -162,6 +163,7 @@ export const Home = () => {
         title="Widasa"
         description="An e‑magazine for Sri Lankan readers"
         buttonText="View website"
+        buttonDisabled
         buttonLink="/projects/widasa"
         model={{
           type: 'laptop',
@@ -182,6 +184,7 @@ export const Home = () => {
         title="GoWise"
         description="A women’s safety platform with alerts, safe zones, and trusted contacts."
         buttonText="View project"
+        buttonDisabled
         buttonLink="/projects/gowise"
         model={{
           type: 'phone',
@@ -206,6 +209,7 @@ export const Home = () => {
         title="EmoVision"
         description="A 2050 concept: emotion‑based social platform connecting people."
         buttonText="View project"
+        buttonDisabled
         buttonLink="/projects/emovision"
         model={{
           type: 'phone',

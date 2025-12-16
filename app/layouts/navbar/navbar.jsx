@@ -155,19 +155,32 @@ export const Navbar = () => {
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
         <div className={styles.navList}>
-          {navLinks.map(({ label, pathname }) => (
-            <RouterLink
-              unstable_viewTransition
-              prefetch="intent"
-              to={pathname}
-              key={label}
-              data-navbar-item
-              className={styles.navLink}
-              aria-current={getCurrent(pathname)}
-              onClick={handleNavItemClick}
-            >
-              {label}
-            </RouterLink>
+          {navLinks.map(({ label, pathname, disabled }) => (
+            disabled ? (
+              // Disabled nav item: render as non-interactive text
+              <span
+                key={label}
+                data-navbar-item
+                className={styles.navLink}
+                aria-disabled="true"
+                title={`${label} is currently unavailable`}
+              >
+                {label}
+              </span>
+            ) : (
+              <RouterLink
+                unstable_viewTransition
+                prefetch="intent"
+                to={pathname}
+                key={label}
+                data-navbar-item
+                className={styles.navLink}
+                aria-current={getCurrent(pathname)}
+                onClick={handleNavItemClick}
+              >
+                {label}
+              </RouterLink>
+            )
           ))}
         </div>
         <NavbarIcons desktop />
@@ -175,24 +188,42 @@ export const Navbar = () => {
       <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
         {({ visible, nodeRef }) => (
           <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
-            {navLinks.map(({ label, pathname }, index) => (
-              <RouterLink
-                unstable_viewTransition
-                prefetch="intent"
-                to={pathname}
-                key={label}
-                className={styles.mobileNavLink}
-                data-visible={visible}
-                aria-current={getCurrent(pathname)}
-                onClick={handleMobileNavClick}
-                style={cssProps({
-                  transitionDelay: numToMs(
-                    Number(msToNum(tokens.base.durationS)) + index * 50
-                  ),
-                })}
-              >
-                {label}
-              </RouterLink>
+            {navLinks.map(({ label, pathname, disabled }, index) => (
+              disabled ? (
+                // Disabled nav item in mobile menu
+                <span
+                  key={label}
+                  className={styles.mobileNavLink}
+                  data-visible={visible}
+                  aria-disabled="true"
+                  title={`${label} is currently unavailable`}
+                  style={cssProps({
+                    transitionDelay: numToMs(
+                      Number(msToNum(tokens.base.durationS)) + index * 50
+                    ),
+                  })}
+                >
+                  {label}
+                </span>
+              ) : (
+                <RouterLink
+                  unstable_viewTransition
+                  prefetch="intent"
+                  to={pathname}
+                  key={label}
+                  className={styles.mobileNavLink}
+                  data-visible={visible}
+                  aria-current={getCurrent(pathname)}
+                  onClick={handleMobileNavClick}
+                  style={cssProps({
+                    transitionDelay: numToMs(
+                      Number(msToNum(tokens.base.durationS)) + index * 50
+                    ),
+                  })}
+                >
+                  {label}
+                </RouterLink>
+              )
             ))}
             <NavbarIcons />
             <ThemeToggle isMobile />

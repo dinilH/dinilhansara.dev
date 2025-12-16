@@ -27,6 +27,7 @@ export function ProjectSummary({
   model,
   buttonText,
   buttonLink,
+  buttonDisabled,
   alternate,
   ...rest
 }) {
@@ -72,7 +73,13 @@ export function ProjectSummary({
           {description}
         </Text>
         <div className={styles.button} data-visible={visible}>
-          <Button iconHoverShift href={buttonLink} iconEnd="arrow-right">
+          <Button
+            iconHoverShift
+            href={buttonDisabled ? undefined : buttonLink}
+            disabled={!!buttonDisabled}
+            aria-disabled={!!buttonDisabled}
+            iconEnd="arrow-right"
+          >
             {buttonText}
           </Button>
         </div>

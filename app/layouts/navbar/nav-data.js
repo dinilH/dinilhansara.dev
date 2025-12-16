@@ -12,6 +12,8 @@ export const navLinks = [
   {
     label: 'Articles',
     pathname: '/articles',
+    // Disabled: Articles section is not available yet
+    disabled: true,
   },
   {
     label: 'Contact',
