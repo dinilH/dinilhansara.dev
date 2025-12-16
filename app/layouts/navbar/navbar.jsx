@@ -12,6 +12,7 @@ import { ThemeToggle } from './theme-toggle';
 import { navLinks, socialLinks } from './nav-data';
 import config from '~/config.json';
 import styles from './navbar.module.css';
+import logoFinal from '~/assets/dinil/logo-final.png';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
@@ -150,7 +151,8 @@ export const Navbar = () => {
         aria-label={`${config.name}, ${config.role}`}
         onClick={handleMobileNavClick}
       >
-        <Monogram highlight />
+        {/* Use the same logo asset for the app brand */}
+        <img src={logoFinal} alt={`${config.name} logo`} height={28} />
       </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
