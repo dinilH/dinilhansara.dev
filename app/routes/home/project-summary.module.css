@@ -45,6 +45,8 @@
 
   .summary[data-alternate='true'] & {
     grid-template-columns: 1fr var(--textColumnWidth);
+    /* Give the alternate (right-text) layout extra breathing room */
+    grid-column-gap: var(--space5XL);
   }
 
   @media (--mediaLaptop) {
@@ -110,6 +112,15 @@
     }
   }
 
+  /* (rules for .model end here) */
+
+
+/* Increase spacing between laptop model and text for alternate layout (used by wibhage.lk) */
+.summary[data-alternate='true'] .model[data-device='laptop'] {
+  /* Nudge the model slightly away from the text and reduce its width a bit */
+  --width: 170%;
+  left: 10%;
+}
   &[data-device='phone'] {
     --width: 116%;
     --aspectRatio: 7 / 10;

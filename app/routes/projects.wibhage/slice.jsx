@@ -40,10 +40,9 @@ import { media } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
 import styles from './slice.module.css';
 
-const title = 'Biomedical image collaboration';
-const description =
-  'This project involved designing a better way for biomedical educators and learners to annotate digital slides together.';
-const roles = ['User Research', 'UX Design', 'Interface Design'];
+const title = 'wibhage.lk';
+const description = 'PHP-based examination management system for schools.';
+const roles = ['Backend Development', 'PHP', 'MySQL'];
 
 export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
@@ -64,8 +63,9 @@ export const Slice = () => {
         <ProjectHeader
           title={title}
           description={description}
-          url="https://www.best.edu.au/s/q2yjjvl7?data=8%404!9%4020303!10%40-15087&version=1"
+          url="https://wibhage.lk/"
           roles={roles}
+          linkLabel="View website"
         />
         <ProjectSection padding="top">
           <ProjectSectionContent>

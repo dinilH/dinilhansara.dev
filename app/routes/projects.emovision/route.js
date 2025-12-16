@@ -1,0 +1,1 @@
+export { EmoVision as default, meta } from './emovision';

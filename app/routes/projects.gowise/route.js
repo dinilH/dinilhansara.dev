@@ -1,0 +1,1 @@
+export { GoWise as default, meta } from './gowise';

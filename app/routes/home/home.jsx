@@ -11,6 +11,7 @@ import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
 import { Footer } from '~/components/footer';
+import { Heading } from '~/components/heading';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
 import { Profile } from './profile';
@@ -18,6 +19,14 @@ import { ProjectSummary } from './project-summary';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
+
+import ShecareHome from '~/assets/dinil/shecare-home.png';
+import WibhageHome from '~/assets/dinil/wibhage-home.png';
+import WidasaHome from '~/assets/dinil/widasa-home.png';
+import GoWiseHome from '~/assets/dinil/gowise-home.png';
+import GoWise2 from '~/assets/dinil/gowise-reportUnsafeArea.png';
+import EmoVisionHome from '~/assets/dinil/emovision-home.png';
+import EmoVision2 from '~/assets/dinil/emovision-map.png';
 
 // Prefetch draco decoader wasm
 export const links = () => {
@@ -42,7 +51,7 @@ export const links = () => {
 export const meta = () => {
   return baseMeta({
     title: 'Designer + Developer',
-    description: `Design portfolio of ${config.name} — a product designer working on web & mobile apps with a focus on motion, experience design, and accessibility.`,
+    description: `Design portfolio of ${config.name} — a BICT undergraduate and a UX enthusiast.`,
   });
 };
 
@@ -53,10 +62,12 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
+  const projectFive = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -69,7 +80,7 @@ export const Home = () => {
           }
         });
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+      { rootMargin: '-0px 0px -10% 0px', threshold: 0.1 }
     );
 
     const indicatorObserver = new IntersectionObserver(
@@ -90,6 +101,7 @@ export const Home = () => {
       indicatorObserver.disconnect();
     };
   }, [visibleSections]);
+  
 
   return (
     <div className={styles.home}>
@@ -98,21 +110,25 @@ export const Home = () => {
         sectionRef={intro}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
+      <Heading as="h2" level={1} align="center" className={styles.projectsHeading}>
+        Projects
+      </Heading>
       <ProjectSummary
         id="project-1"
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
+        title="SheCare"
+        description="Our UI UX solution won the most popular award at the Ballerina 2025 competition. This platform ensures womens' health and wellbeing with SheCare, a comprehensive app for tracking menstrual cycles, symptoms, and overall wellness."
         buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        buttonLink="/projects/she-care"
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'Project SheCare mockup',
           textures: [
+        
             {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
+              srcSet: `${ShecareHome} 1919w, ${sprTextureLarge} 2560w`,
               placeholder: sprTexturePlaceholder,
             },
           ],
@@ -120,25 +136,20 @@ export const Home = () => {
       />
       <ProjectSummary
         id="project-2"
-        alternate
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://dinilhansara.dev"
+        title="wibhage.lk"
+        description="PHP-based examination management system"
+        buttonText="View project"
+        buttonLink="/projects/wibhage"
         model={{
-          type: 'phone',
-          alt: 'App login screen',
+          type: 'laptop',
+          alt: 'wibhage.lk website mockup',
           textures: [
             {
-              srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
-              placeholder: gamestackTexturePlaceholder,
-            },
-            {
-              srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
-              placeholder: gamestackTexture2Placeholder,
+              srcSet: `${WibhageHome} 375w, ${WibhageHome} 750w`,
+              placeholder: WibhageHome,
             },
           ],
         }}
@@ -148,17 +159,65 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
-        buttonLink="/projects/slice"
+        title="Widasa"
+        description="An e‑magazine for Sri Lankan readers"
+        buttonText="View website"
+        buttonLink="/projects/widasa"
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: 'Widasa e‑magazine website mockup',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${WidasaHome} 800w, ${WidasaHome} 1920w`,
+              placeholder: WidasaHome,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="GoWise"
+        description="A women’s safety platform with alerts, safe zones, and trusted contacts."
+        buttonText="View project"
+        buttonLink="/projects/gowise"
+        model={{
+          type: 'phone',
+          alt: 'GoWise mobile app mockup',
+          textures: [
+            {
+              srcSet: `${GoWise2} 375w, ${GoWise2} 750w`,
+              placeholder: GoWise2,
+            },
+            {
+              srcSet: `${GoWiseHome} 375w, ${GoWiseHome} 750w`,
+              placeholder: GoWiseHome,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-5"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="EmoVision"
+        description="A 2050 concept: emotion‑based social platform connecting people."
+        buttonText="View project"
+        buttonLink="/projects/emovision"
+        model={{
+          type: 'phone',
+          alt: 'EmoVision mobile app mockup',
+          textures: [
+            {
+              srcSet: `${EmoVision2} 360w, ${EmoVision2} 750w`,
+              placeholder: EmoVision2,
+            },
+            {
+              srcSet: `${EmoVisionHome} 360w, ${EmoVisionHome} 750w`,
+              placeholder: EmoVisionHome,
             },
           ],
         }}

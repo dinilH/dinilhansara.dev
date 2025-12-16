@@ -116,6 +116,31 @@ const tokenStyles = squish(`
 `);
 
 const fontStyles = squish(`
+  /* Tesla font (expects system-installed or future bundled woff2). */
+  @font-face {
+    font-family: Tesla;
+    font-weight: 400;
+    src: local('Tesla'), local('TESLA');
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Tesla;
+    font-weight: 500;
+    src: local('Tesla Medium'), local('Tesla-Medium'), local('Tesla');
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Tesla;
+    font-weight: 700;
+    src: local('Tesla Bold'), local('Tesla-Bold'), local('Tesla');
+    font-display: swap;
+    font-style: normal;
+  }
+
   @font-face {
     font-family: Gotham;
     font-weight: 400;
