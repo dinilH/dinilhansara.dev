@@ -168,6 +168,19 @@
   }
 }
 
+/* Modifier for stacking role label lines on mobile */
+.roleWord {
+  @media (--mediaMobile) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+.roleLine {
+  display: inline-block;
+}
+
 @keyframes introLine {
   0% {
     transform: scaleX(0);

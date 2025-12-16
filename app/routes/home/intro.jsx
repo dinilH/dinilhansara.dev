@@ -8,6 +8,7 @@ import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
 import { useInterval, usePrevious, useScrollToHash } from '~/hooks';
 import { Suspense, lazy, useEffect, useState } from 'react';
+import { useWindowSize } from '~/hooks/useWindowSize';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
 import { useHydrated } from '~/hooks/useHydrated';
@@ -29,6 +30,25 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
+  const { width } = useWindowSize();
+
+  const roleText = config.role;
+  const shouldSplit = width <= 768 && roleText?.length > 10;
+  let roleFirst = roleText;
+  let roleSecond = '';
+  if (shouldSplit) {
+    const ampIndex = roleText.indexOf('&');
+    if (ampIndex > -1) {
+      roleFirst = roleText.slice(0, ampIndex).trim();
+      roleSecond = roleText.slice(ampIndex).trim();
+    } else {
+      const spaceIndex = roleText.indexOf(' ');
+      if (spaceIndex > -1) {
+        roleFirst = roleText.slice(0, spaceIndex).trim();
+        roleSecond = roleText.slice(spaceIndex + 1).trim();
+      }
+    }
+  }
 
   useInterval(
     () => {
@@ -78,11 +98,18 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                 </VisuallyHidden>
                 <span aria-hidden className={styles.row}>
                   <span
-                    className={styles.word}
+                    className={`${styles.word} ${shouldSplit ? styles.roleWord : ''}`}
                     data-status={status}
                     style={cssProps({ delay: tokens.base.durationXS })}
                   >
-                    {config.role}
+                    {shouldSplit ? (
+                      <>
+                        <span className={styles.roleLine}>{roleFirst}</span>
+                        <span className={styles.roleLine}>{roleSecond}</span>
+                      </>
+                    ) : (
+                      roleText
+                    )}
                   </span>
                   <span className={styles.line} data-status={status} />
                 </span>
