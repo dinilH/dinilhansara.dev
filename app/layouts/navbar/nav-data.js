@@ -7,30 +7,15 @@ export const navLinks = [
   },
   {
     label: 'About',
-    pathname: '/#about',
-  },
-  {
-    label: 'Articles',
-    pathname: '/articles',
-    // Disabled: Articles section is not available yet
-    disabled: true,
-  },
-  {
-    label: 'Contact',
-    pathname: '/contact',
+    pathname: '/#details',
   },
 ];
 
 export const socialLinks = [
   {
-    label: 'Linkedin',
-    url: `https://www.linkedin.com/in/${config.linkedin}`,
+    label: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/dinilhansara/',
     icon: 'linkedin',
-  },
-  {
-    label: 'Figma',
-    url: `https://www.figma.com/${config.figma}`,
-    icon: 'figma',
   },
   {
     label: 'Github',

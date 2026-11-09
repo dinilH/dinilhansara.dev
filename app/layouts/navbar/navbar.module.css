@@ -72,6 +72,9 @@
     &:active,
     &[aria-current='page'] {
       color: var(--textBody);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
     }
 
     &::after {
@@ -94,8 +97,7 @@
     &:hover::after,
     &:active::after,
     &[aria-current='page']::after {
-      transform: scaleY(1) translateZ(0);
-      transform-origin: top;
+      display: none;
     }
   }
 
@@ -230,6 +232,16 @@
     &[data-visible='true'] {
       opacity: 1;
       transform: none;
+    }
+
+    &[aria-current='page'] {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    &[aria-current='page']::after {
+      display: none;
     }
   }
 }

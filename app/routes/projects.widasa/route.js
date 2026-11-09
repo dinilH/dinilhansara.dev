@@ -1,1 +1,0 @@
-export { Widasa as default, meta } from './widasa';

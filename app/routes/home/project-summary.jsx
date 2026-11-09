@@ -4,13 +4,12 @@ import { Heading } from '~/components/heading';
 import { deviceModels } from '~/components/model/device-models';
 import { Section } from '~/components/section';
 import { Text } from '~/components/text';
-import { useTheme } from '~/components/theme-provider';
 import { Transition } from '~/components/transition';
 import { Loader } from '~/components/loader';
 import { useWindowSize } from '~/hooks';
-import { Suspense, lazy, useState } from 'react';
-import { cssProps, media } from '~/utils/style';
 import { useHydrated } from '~/hooks/useHydrated';
+import { Suspense, lazy, useState } from 'react';
+import { media } from '~/utils/style';
 import styles from './project-summary.module.css';
 
 const Model = lazy(() =>
@@ -24,7 +23,8 @@ export function ProjectSummary({
   index,
   title,
   description,
-  model,
+  textures,
+  device = 'laptop',
   buttonText,
   buttonLink,
   buttonDisabled,
@@ -32,19 +32,27 @@ export function ProjectSummary({
   ...rest
 }) {
   const [focused, setFocused] = useState(false);
-  const [modelLoaded, setModelLoaded] = useState(false);
-  const { theme } = useTheme();
   const { width } = useWindowSize();
+  const [modelLoaded, setModelLoaded] = useState(false);
   const isHydrated = useHydrated();
   const titleId = `${id}-title`;
   const isMobile = width <= media.tablet;
   const indexText = index < 10 ? `0${index}` : index;
-  const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
-  const laptopSizes = `(max-width: ${media.tablet}px) 80vw, 40vw`;
+  const sizes =
+    device === 'phone'
+      ? `(max-width: ${media.tablet}px) 30vw, 20vw`
+      : `(max-width: ${media.tablet}px) 80vw, 40vw`;
 
-  function handleModelLoad() {
-    setModelLoaded(true);
-  }
+  const models = textures.map((texture, index) => ({
+    ...(deviceModels[device] || deviceModels.laptop),
+    position:
+      device === 'phone'
+        ? index === 0
+          ? { x: -0.6, y: 1.1, z: 0 }
+          : { x: 0.6, y: -0.5, z: 0.3 }
+        : { x: 0, y: 0, z: 0 },
+    texture: { ...texture, sizes },
+  }));
 
   function renderDetails(visible) {
     return (
@@ -90,73 +98,21 @@ export function ProjectSummary({
   function renderPreview(visible) {
     return (
       <div className={styles.preview}>
-        {model.type === 'laptop' && (
-          <>
-            <div className={styles.model} data-device="laptop">
-              {!modelLoaded && (
-                <Loader center className={styles.loader} data-visible={visible} />
-              )}
-              {isHydrated && visible && (
-                <Suspense>
-                  <Model
-                    alt={model.alt}
-                    cameraPosition={{ x: 0, y: 0, z: 8 }}
-                    showDelay={700}
-                    onLoad={handleModelLoad}
-                    show={visible}
-                    models={[
-                      {
-                        ...deviceModels.laptop,
-                        texture: {
-                          ...model.textures[0],
-                          sizes: laptopSizes,
-                        },
-                      },
-                    ]}
-                  />
-                </Suspense>
-              )}
-            </div>
-          </>
-        )}
-        {model.type === 'phone' && (
-          <>
-            <div className={styles.model} data-device="phone">
-              {!modelLoaded && (
-                <Loader center className={styles.loader} data-visible={visible} />
-              )}
-              {isHydrated && visible && (
-                <Suspense>
-                  <Model
-                    alt={model.alt}
-                    cameraPosition={{ x: 0, y: 0, z: 11.5 }}
-                    showDelay={300}
-                    onLoad={handleModelLoad}
-                    show={visible}
-                    models={[
-                      {
-                        ...deviceModels.phone,
-                        position: { x: -0.6, y: 1.1, z: 0 },
-                        texture: {
-                          ...model.textures[0],
-                          sizes: phoneSizes,
-                        },
-                      },
-                      {
-                        ...deviceModels.phone,
-                        position: { x: 0.6, y: -0.5, z: 0.3 },
-                        texture: {
-                          ...model.textures[1],
-                          sizes: phoneSizes,
-                        },
-                      },
-                    ]}
-                  />
-                </Suspense>
-              )}
-            </div>
-          </>
-        )}
+        <div className={styles.model} data-device={device}>
+          {!modelLoaded && <Loader center className={styles.loader} data-visible={visible} />}
+          {isHydrated && visible && (
+            <Suspense>
+              <Model
+                alt={title}
+                cameraPosition={device === 'phone' ? { x: 0, y: 0, z: 11.5 } : { x: 0, y: 0, z: 8 }}
+                showDelay={device === 'phone' ? 300 : 700}
+                onLoad={() => setModelLoaded(true)}
+                show={visible}
+                models={models}
+              />
+            </Suspense>
+          )}
+        </div>
       </div>
     );
   }

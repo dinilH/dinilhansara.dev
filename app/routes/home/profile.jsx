@@ -1,7 +1,6 @@
 import profileImgLarge from '~/assets/dinil/profile.jpeg';
 import profileImgPlaceholder from '~/assets/dinil/profile.jpeg';
 import profileImg from '~/assets/dinil/profile.jpeg';
-import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Divider } from '~/components/divider';
 import { Heading } from '~/components/heading';
@@ -47,15 +46,6 @@ export const Profile = ({ id, visible, sectionRef }) => {
           <div className={styles.content} ref={nodeRef}>
             <div className={styles.column}>
               <ProfileText visible={visible} titleId={titleId} />
-              <Button
-                secondary
-                className={styles.button}
-                data-visible={visible}
-                href="/contact"
-                icon="send"
-              >
-                Send me a message
-              </Button>
             </div>
             <div className={styles.column}>
               <div className={styles.tag} aria-hidden>
