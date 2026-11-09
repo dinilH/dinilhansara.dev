@@ -1,14 +1,9 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
-
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+DESIGNER
 
 Dinil Hansara
 Hand crafted design & web development
@@ -19,11 +14,10 @@ Photoshop
 Blender
 
 https://dinilhansara.dev
-https://dinilhansara.dev
 
 _______________________________________________________________________________
 
-TECHNOLOGY | テクノロジー
+TECHNOLOGY
 
 React
 Remix
@@ -32,8 +26,7 @@ Framer Motion
 
 _______________________________________________________________________________
 
-FONTS | フォント
+FONTS
 
 Gotham
 IPA Gothic Regular
-Hiragino Kaku Gothic W8
