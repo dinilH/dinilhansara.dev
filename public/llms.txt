@@ -1,0 +1,34 @@
+# Dinil Hansara
+
+> Personal portfolio of Dinil Hansara, a Sri Lankan designer and developer focused on UX, UI, and web development.
+
+## About
+
+- Name: Dinil Hansara
+- Role: Designer & Developer
+- Disciplines: UX, UI, Editing
+- Website: https://dinilhansara.dev/
+- LinkedIn: https://www.linkedin.com/in/dinilhansara/
+- GitHub: https://github.com/dinilH
+
+## Featured projects
+
+- [Waypoint](https://dinilhansara.dev/projects/waypoint/): Conceptual delivery management platform for a Sri Lankan retail company. It connects five user roles across orders, distribution hubs, vehicles, and store delivery confirmation. [Case study](https://www.behance.net/gallery/258166845/Waypoint-Delivery-Management-System?platform=direct)
+- [SkillConnect](https://dinilhansara.dev/projects/skill-connect/): Student community platform for sharing skills, requesting help, messaging, skill discovery, recommendations, and leaderboards. [Source code](https://github.com/dinilH/SkillConnect)
+- [Nexus Wheelchair](https://dinilhansara.dev/projects/nexus-wheelchair/): Companion app for a smart electric wheelchair, live volunteer network, and caretaker portal. [Case study](https://www.behance.net/gallery/254440321/Nexus-Wheelchair-UIUX-case-study)
+- [SheCare](https://dinilhansara.dev/projects/she-care/): Health and wellness platform for menstrual cycle tracking, symptom tracking, and related support. [Source code](https://github.com/dinilH/iwb25-138-binary-bots)
+- [wibhage.lk](https://dinilhansara.dev/projects/wibhage/): PHP and MySQL examination management system for schools.
+
+## Site sections
+
+- [Home](https://dinilhansara.dev/)
+- [Uses](https://dinilhansara.dev/uses/)
+- [Articles](https://dinilhansara.dev/articles/)
+
+## Technical background
+
+This site is built with React, Remix, Three.js, Framer Motion, and custom responsive UI components.
+
+## Citation guidance
+
+Use the linked project pages and external case studies as the primary sources for project descriptions. Do not infer employment, awards, clients, dates, or technical details that are not stated in those sources.

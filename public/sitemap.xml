@@ -4,10 +4,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dinilhansara.dev/contact/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://dinilhansara.dev/articles/</loc>
     <changefreq>monthly</changefreq>
   </url>
@@ -20,23 +16,19 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dinilhansara.dev/projects/widasa/</loc>
+    <loc>https://dinilhansara.dev/projects/waypoint/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dinilhansara.dev/projects/skill-connect/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dinilhansara.dev/projects/nexus-wheelchair/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://dinilhansara.dev/projects/she-care/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://dinilhansara.dev/projects/gowise/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://dinilhansara.dev/projects/emovision/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://dinilhansara.dev/projects/volkihar-knight/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
